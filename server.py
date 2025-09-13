@@ -11,7 +11,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__, static_folder='public', static_url_path='')
 CORS(app)
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join('data', 'db.json')
 
 def read_db():
