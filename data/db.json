@@ -1,0 +1,122 @@
+{
+  "egg_stock_entries": [
+    {
+      "mutu1": 20,
+      "mutu2": 10,
+      "mutu3": 11,
+      "pecah": 12,
+      "notes": "Stok pagi",
+      "id": "35e124a9-e2dc-45a4-aa5d-b11ab4f041d9",
+      "created_at": "2025-09-11T17:57:14.438920Z",
+      "userId": "48a3de4f-07b1-4628-9da8-7580446fe13a"
+    },
+    {
+      "mutu1": 20,
+      "mutu2": 10,
+      "mutu3": 11,
+      "pecah": 12,
+      "notes": "Stok siang",
+      "id": "35e124a9-e2dc-45a4-aa5d-b11ab4f041d9",
+      "created_at": "2025-09-12T17:57:14.438920Z",
+      "userId": "48a3de4f-07b1-4628-9da8-7580446fe13a"
+    },
+    {
+      "mutu1": 12,
+      "mutu2": 1,
+      "mutu3": 1,
+      "pecah": 0,
+      "notes": "Stok sore",
+      "id": "e2479397-3e1b-4794-95db-99953c24b3cc",
+      "created_at": "2025-09-12T17:58:08.808408Z",
+      "userId": "48a3de4f-07b1-4628-9da8-7580446fe13a"
+    }
+  ],
+  "users": [
+    {
+      "id": "48a3de4f-07b1-4628-9da8-7580446fe13a",
+      "email": "danuireng@gmail.com",
+      "password": "pbkdf2:sha256:1000000$TxQMCUKoJS7rv8tp$7f9605ac27c89fcfe657452d0310483d3baf121761d5bdc60422dacbda02e8c2",
+      "sessionToken": "c89c0948-10a8-4983-9dca-8e6349e9ff6a"
+    }
+  ],
+  "locations": [
+    {
+      "id": "loc-1",
+      "region_name": "Blitar, Jawa Timur",
+      "status": "surplus",
+      "amount": 15000,
+      "price_per_egg": 26000,
+      "userId": "48a3de4f-07b1-4628-9da8-7580446fe13a"
+    },
+    {
+      "id": "loc-2",
+      "region_name": "Kediri, Jawa Timur",
+      "status": "surplus",
+      "amount": 12000,
+      "price_per_egg": 25500,
+      "userId": "48a3de4f-07b1-4628-9da8-7580446fe13a"
+    },
+    {
+      "id": "loc-3",
+      "region_name": "Surabaya, Jawa Timur",
+      "status": "defisit",
+      "amount": -20000,
+      "price_per_egg": 27000,
+      "userId": "48a3de4f-07b1-4628-9da8-7580446fe13a"
+    },
+    {
+      "id": "loc-4",
+      "region_name": "Denpasar, Bali",
+      "status": "defisit",
+      "amount": -18000,
+      "price_per_egg": 28500,
+      "userId": "48a3de4f-07b1-4628-9da8-7580446fe13a"
+    }
+  ],
+  "routes": [
+    {
+      "id": "route-1",
+      "from_location": { "region_name": "Blitar, Jawa Timur" },
+      "to_location": { "region_name": "Surabaya, Jawa Timur" },
+      "distance_km": 156,
+      "duration_hours": 3.5,
+      "userId": "48a3de4f-07b1-4628-9da8-7580446fe13a"
+    },
+    {
+      "id": "route-2",
+      "from_location": { "region_name": "Kediri, Jawa Timur" },
+      "to_location": { "region_name": "Denpasar, Bali" },
+      "distance_km": 430,
+      "duration_hours": 9,
+      "userId": "48a3de4f-07b1-4628-9da8-7580446fe13a"
+    }
+  ],
+  "deliveries": [
+    {
+      "id": "del-1",
+      "route": {
+        "from_location": { "region_name": "Blitar, Jawa Timur" },
+        "to_location": { "region_name": "Surabaya, Jawa Timur" }
+      },
+      "departure_time": "2025-09-13T05:00:00Z",
+      "arrival_time": "2025-09-13T08:30:00Z",
+      "driver_name": "Budi Santoso",
+      "vehicle_plate": "AG 1234 XY",
+      "status": "in_transit",
+      "userId": "48a3de4f-07b1-4628-9da8-7580446fe13a"
+    },
+    {
+      "id": "del-2",
+      "route": {
+        "from_location": { "region_name": "Kediri, Jawa Timur" },
+        "to_location": { "region_name": "Denpasar, Bali" }
+      },
+      "departure_time": "2025-09-14T22:00:00Z",
+      "arrival_time": "2025-09-15T07:00:00Z",
+      "driver_name": "Sari Dewi",
+      "vehicle_plate": "N 5678 BCD",
+      "status": "scheduled",
+      "userId": "48a3de4f-07b1-4628-9da8-7580446fe13a"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+[
+  {
+    "provinsi": "Aceh",
+    "harga": 29950
+  },
+  {
+    "provinsi": "Sumatera Utara",
+    "harga": 30950
+  },
+  {
+    "provinsi": "Sumatera Barat",
+    "harga": 29500
+  },
+  {
+    "provinsi": "Riau",
+    "harga": 29600
+  },
+  {
+    "provinsi": "Jambi",
+    "harga": 26100
+  },
+  {
+    "provinsi": "Bengkulu",
+    "harga": 28900
+  },
+  {
+    "provinsi": "Sumatera Selatan",
+    "harga": 27450
+  },
+  {
+    "provinsi": "Lampung",
+    "harga": 27800
+  },
+  {
+    "provinsi": "Banten",
+    "harga": 27400
+  },
+  {
+    "provinsi": "Jawa Barat",
+    "harga": 27350
+  },
+  {
+    "provinsi": "DKI Jakarta",
+    "harga": 27600
+  },
+  {
+    "provinsi": "Jawa Tengah",
+    "harga": 26050
+  },
+  {
+    "provinsi": "DI Yogyakarta",
+    "harga": 27150
+  },
+  {
+    "provinsi": "Jawa Timur",
+    "harga": 26000
+  },
+  {
+    "provinsi": "Bali",
+    "harga": 30100
+  },
+  {
+    "provinsi": "Nusa Tenggara Barat",
+    "harga": 28800
+  },
+  {
+    "provinsi": "Nusa Tenggara Timur",
+    "harga": 31400
+  },
+  {
+    "provinsi": "Kalimantan Barat",
+    "harga": 33000
+  },
+  {
+    "provinsi": "Kalimantan Selatan",
+    "harga": 30150
+  },
+  {
+    "provinsi": "Kalimantan Tengah",
+    "harga": 32200
+  },
+  {
+    "provinsi": "Kalimantan Timur",
+    "harga": 30550
+  },
+  {
+    "provinsi": "Kalimantan Utara",
+    "harga": 31250
+  },
+  {
+    "provinsi": "Gorontalo",
+    "harga": 34000
+  },
+  {
+    "provinsi": "Sulawesi Selatan",
+    "harga": 25800
+  },
+  {
+    "provinsi": "Sulawesi Tenggara",
+    "harga": 30950
+  },
+  {
+    "provinsi": "Sulawesi Tengah",
+    "harga": 31000
+  },
+  {
+    "provinsi": "Sulawesi Utara",
+    "harga": 29200
+  },
+  {
+    "provinsi": "Sulawesi Barat",
+    "harga": 26200
+  },
+  {
+    "provinsi": "Maluku",
+    "harga": 37600
+  },
+  {
+    "provinsi": "Maluku Utara",
+    "harga": 36950
+  },
+  {
+    "provinsi": "Papua",
+    "harga": 39100
+  },
+  {
+    "provinsi": "Papua Barat",
+    "harga": 35200
+  }
+]
