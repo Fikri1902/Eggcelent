@@ -9,7 +9,7 @@ import EggStockTable from '@/components/EggStockTable';
 import { useAuth } from '@/contexts/AuthContext';
 import EggDetectionModal from './EggDetectionModal'; // IMPORT KOMPONEN BARU
 
-const API_URL = 'http://127.0.0.1:5000/api/egg-stock';
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 const EggChecker = () => {
   const { token } = useAuth();

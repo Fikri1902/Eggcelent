@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useEffect, useCallback } fr
 import { toast } from '@/components/ui/use-toast';
 
 const AuthContext = createContext(undefined);
-const API_URL = 'http://127.0.0.1:5000/api';
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

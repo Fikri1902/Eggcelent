@@ -6,6 +6,8 @@ import EggLogo from './EggLogo';
 import { useAuth } from '@/contexts/AuthContext'; // Impor useAuth untuk token
 import { toast } from '@/components/ui/use-toast';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+
 const EggDetectionModal = ({ isOpen, onClose }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [result, setResult] = useState(null);

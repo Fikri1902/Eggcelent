@@ -9,7 +9,7 @@ import HistoricalProductionChart from '@/components/HistoricalProductionChart';
 import HeatStressIndicator from '@/components/HeatStressIndicator';
 import { Card } from '@/components/ui/card';
 
-const API_URL = 'http://127.0.0.1:5000/api/egg-stock';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Dashboard = () => {
   const [eggData, setEggData] = React.useState({ total: 0, mutu1: 0 });

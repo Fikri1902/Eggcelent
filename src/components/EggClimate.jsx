@@ -8,7 +8,7 @@ import { toast } from '@/components/ui/use-toast';
 import WeatherCard from './WeatherCard';
 import THIChart from './THIChart';
 import HeatStressAlert from './HeatStressAlert';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 // Komponen LocationSelector kita letakkan di sini agar file tetap rapi
 const LocationSelector = ({ onProcess, isLoading }) => {
   const OPENCAGE_API_KEY = import.meta.env.VITE_OPENCAGE_API_KEY || ''; 
