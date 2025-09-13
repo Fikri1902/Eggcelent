@@ -1,0 +1,6 @@
+Flask
+Flask-Cors
+Pillow
+torch
+torchvision
+ultralytics
