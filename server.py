@@ -232,76 +232,38 @@ def run_sarimax():
         print(f"An unexpected error occurred: {e}")
         return jsonify({"error": "Terjadi kesalahan internal pada server."}), 500
     
-    # === ENDPOINT BARU UNTUK DETEKSI TELUR ===
+# Ganti fungsi ini di dalam file server.py
+
 @app.route('/api/detect', methods=['POST'])
 @token_required # Lindungi endpoint ini
 def detect_egg_quality():
+    # Karena kita sekarang menghasilkan data acak, kita tidak perlu lagi
+    # menyimpan atau memproses file yang diunggah.
+    # Cukup pastikan ada file yang dikirim untuk menjaga alur kerja frontend.
     if 'file' not in request.files:
         return jsonify({"error": "Tidak ada file gambar yang diunggah."}), 400
 
-    file = request.files['file']
-
-    if file.filename == '':
-        return jsonify({"error": "Nama file tidak boleh kosong."}), 400
-
-    if file:
-        # Pastikan nama file aman
-        filename = secure_filename(file.filename)
+    try:
+        # Jalankan skrip deteksi versi random
+        # Kita tetap memberikan argumen palsu 'image_path' agar antarmuka sama
+        command = ['python', 'detect_egg.py', 'placeholder.jpg']
+        result = subprocess.run(
+            command,
+            check=True,
+            capture_output=True,
+            text=True,
+            encoding='utf-8'
+        )
         
-        # Buat folder 'uploads' jika belum ada
-        upload_folder = 'uploads'
-        os.makedirs(upload_folder, exist_ok=True)
+        detection_data = json.loads(result.stdout)
         
-        # Simpan file gambar sementara
-        image_path = os.path.join(upload_folder, filename)
-        file.save(image_path)
+        if detection_data.get('status') == 'error':
+             return jsonify({"error": "Gagal melakukan deteksi.", "details": detection_data.get('message')}), 500
 
-        try:
-            # Jalankan skrip deteksi
-            command = ['python', 'detect_egg.py', image_path]
-            result = subprocess.run(
-                command,
-                check=True,
-                capture_output=True,
-                text=True,
-                encoding='utf-8'
-            )
-            
-             # --- PERBAIKAN DI SINI ---
-            # Ambil output mentah dari skrip
-            raw_output = result.stdout
-            
-            # Cari di mana string JSON dimulai (biasanya dengan '{')
-            json_start_index = raw_output.find('{')
-            
-            if json_start_index == -1:
-                # Jika tidak ada JSON sama sekali, lempar error
-                raise ValueError(f"Tidak ada output JSON yang valid dari skrip deteksi. Output: {raw_output}")
+        return jsonify(detection_data)
 
-            # Ambil hanya bagian JSON dari output
-            json_output = raw_output[json_start_index:]
-            
-            # Sekarang parse string JSON yang sudah bersih
-            detection_data = json.loads(json_output)
-            # --- AKHIR PERBAIKAN ---
-            
-            # Hapus file gambar setelah selesai
-            os.remove(image_path)
-
-            if detection_data.get('status') == 'error':
-                 return jsonify({"error": "Gagal melakukan deteksi.", "details": detection_data.get('message')}), 500
-
-            return jsonify(detection_data)
-
-        except subprocess.CalledProcessError as e:
-            # Hapus file gambar jika terjadi error
-            os.remove(image_path)
-            return jsonify({"error": "Gagal menjalankan skrip deteksi.", "details": e.stderr}), 500
-        except Exception as e:
-            # Hapus file gambar jika terjadi error
-            if os.path.exists(image_path):
-                os.remove(image_path)
-            return jsonify({"error": "Terjadi kesalahan internal.", "details": str(e)}), 500
+    except Exception as e:
+        return jsonify({"error": "Terjadi kesalahan internal.", "details": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

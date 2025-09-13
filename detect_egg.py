@@ -1,52 +1,40 @@
-import sys
-from ultralytics import YOLO
+# detect_egg.py (versi random)
+import random
 import json
+import sys
 
-def detect_quality(image_path):
+def get_random_detection():
     """
-    Memuat model YOLOv8 dan melakukan deteksi pada gambar yang diberikan.
+    Menghasilkan hasil deteksi mutu telur secara acak.
     """
     try:
-        # Muat model best.pt Anda
-        model = YOLO('best.pt') 
-
-        # Lakukan prediksi pada gambar
-        results = model(image_path)
-
-        # Siapkan untuk menyimpan hasil
-        detection_results = []
+        # Daftar kemungkinan hasil mutu
+        class_names = ['Mutu 1', 'Mutu 2', 'Mutu 3', 'Rusak']
         
-        # Iterasi melalui hasil deteksi
-        for r in results:
-            boxes = r.boxes
-            for box in boxes:
-                # Dapatkan nama kelas (Mutu1, Mutu2, dll.)
-                class_id = int(box.cls[0])
-                class_name = model.names[class_id]
-                
-                # Dapatkan confidence score
-                confidence = float(box.conf[0])
-                
-                detection_results.append({
-                    "quality": class_name,
-                    "confidence": f"{confidence:.2%}" # Format ke persen
-                })
-
-        # Jika tidak ada telur yang terdeteksi
-        if not detection_results:
-            return {"status": "ok", "detections": [{"quality": "Tidak Terdeteksi", "confidence": "N/A"}]}
-
-        return {"status": "ok", "detections": detection_results}
+        # Pilih satu mutu secara acak
+        random_quality = random.choice(class_names)
+        
+        # Buat persentase keyakinan acak (antara 75% hingga 99%)
+        random_confidence = random.uniform(75.0, 99.9)
+        
+        # Format hasil sesuai dengan yang diharapkan oleh frontend
+        detection_result = {
+            "quality": random_quality,
+            "confidence": f"{random_confidence:.2f}%"
+        }
+        
+        # Kembalikan dalam format JSON yang sama seperti model asli
+        return {"status": "ok", "detections": [detection_result]}
 
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
 if __name__ == "__main__":
-    # Ambil path gambar dari argumen command line
-    image_file_path = sys.argv[1]
+    # Kita tidak lagi memerlukan image_path, tapi file tetap menerimanya
+    # agar tidak error saat dipanggil oleh server.py
+    # image_file_path = sys.argv[1] 
     
-    # Jalankan deteksi
-    final_result = detect_quality(image_file_path)
+    final_result = get_random_detection()
     
-    # Cetak hasil sebagai JSON agar bisa ditangkap oleh server.py
+    # Cetak hasil sebagai JSON
     print(json.dumps(final_result))

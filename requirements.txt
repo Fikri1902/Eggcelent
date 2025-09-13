@@ -1,6 +1,3 @@
+# requirements.txt (versi random)
 Flask
 Flask-Cors
-Pillow
-torch
-torchvision
-ultralytics
